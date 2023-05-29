@@ -1,0 +1,27 @@
+npm i -g @angular/cli
+navigate in terminal to the location you want your application at
+ng new <project_name>
+select yes for angular routing, and css for type of styles
+code . -> open the application in vs code
+
+Similarities between C# and Angular
+Controller      Components
+Views           Templates
+Attributes      Decorators
+Services        Services
+DI              DI
+Routing         Routing
+Filters         Guards
+Middleware      Interceptors
+C#              Typescript  (same inventor)
+Microservices   Modules
+
+
+Decorator：a function which we use to attach meta data to a class, method, accessor, property, or parameter.
+           And we apply it using the @expression. For example: @component, @injectable
+
+@NgModule is a decorator that defines the class as an angular module and adds the required metadata to it.
+
+@injectable has two purposes:
+	One is it instructs angular that this class needs a dependency.
+	Using the providedIn we inform the dependency injection system how to provide the service.
