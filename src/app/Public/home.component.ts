@@ -8,12 +8,14 @@ import {Job} from "../Shared/Models/Job";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  availableJobs:Job[] = [];
-  exampleVariable:string='example string';
-  constructor(private jobService: JobService) {}
+  availableJobs: Job[] = [];
+  exampleVariable: string = 'example string';
 
-  ngOnInit():void {
-    setTimeout(()=>{
+  constructor(private jobService: JobService) {
+  }
+
+  ngOnInit(): void {
+    setTimeout(() => {
       this.exampleVariable = "the new data"
     }, 200);
     // this.jobService.getAllJobs().subscribe(data=> this.availableJobs = data);
