@@ -16,6 +16,6 @@ export class JobService {
     headers = headers.set('Ocp-Apim-Subscription-Key', '6128a1f23062476c8395e674976d5513');
     return this.http.get<Job[]>("https://antra2023apigateway.azure-api.net/recruting/api/Jobs", {
       headers: {'Ocp-Apim-Subscription-Key': '6128a1f23062476c8395e674976d5513'}
-    })
+    });
   }
 }
