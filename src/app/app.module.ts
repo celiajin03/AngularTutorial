@@ -7,8 +7,9 @@ import {CoreModule} from './Core/core.module';
 import {SharedModule} from './Shared/shared.module';
 import {HomeComponent} from './Public/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from "@angular/forms";
+import {JwtAdderInterceptor} from "./Core/Interceptors/jwt-adder.interceptor";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import {FormsModule} from "@angular/forms";
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+      {provide:HTTP_INTERCEPTORS, useClass:JwtAdderInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

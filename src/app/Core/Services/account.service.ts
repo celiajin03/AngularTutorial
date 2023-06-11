@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Register} from "../../Shared/Models/Register";
 import {Login} from "../../Shared/Models/Login";
 import {environment} from "../../../environments/environment";
-import {User} from "../../Shared/Models/User";
+import {User, UserWAdmin} from "../../Shared/Models/User";
 import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Injectable({
@@ -13,7 +13,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
 })
 export class AccountService {
 
-  private currentUserSubject = new BehaviorSubject<User>({} as User);
+  private currentUserSubject = new BehaviorSubject<UserWAdmin>({} as UserWAdmin);
   public currentUser = this.currentUserSubject.asObservable();
 
   private islLoggedInSubject = new BehaviorSubject<boolean>(false);
@@ -46,21 +46,22 @@ export class AccountService {
 
   Logout() {
     localStorage.removeItem('token');
-    this.currentUserSubject.next({} as User);
+    this.currentUserSubject.next({} as UserWAdmin);
     this.islLoggedInSubject.next(false);
   }
 
   populateUserInfoFromToken() {
-    var toeknValue = localStorage.getItem('token');
+    var tokenValue = localStorage.getItem('token');
 
-    if (toeknValue && !this.jwtHelper.isTokenExpired(toeknValue)) {
-      const decodedToken = this.jwtHelper.decodeToken(toeknValue);
+    if (tokenValue && !this.jwtHelper.isTokenExpired(tokenValue)) {
+      const decodedToken = this.jwtHelper.decodeToken(tokenValue);
       this.islLoggedInSubject.next(true);
-      const newUser: User =  {
+      const newUser: UserWAdmin =  {
         email: decodedToken.email,
         firstName: decodedToken.firstName,
         lastName: decodedToken.lastName,
-        password: decodedToken.password
+        password: decodedToken.password,
+        isAdmin: decodedToken.isAdmin
       };
       this.currentUserSubject.next(newUser);
     }
