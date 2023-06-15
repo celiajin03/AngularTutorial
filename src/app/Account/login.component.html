@@ -15,11 +15,11 @@
           <form #loginForm="ngForm" (submit)="Login(loginForm)">
             <div class="form-group">
               <label for="email">Email:</label>
-              <input type="email" [(ngModel)]="loginData.email" name="email" class="form-control-inline m-3" required>
+              <input type="email" [(ngModel)]="loginData.email" id="email" name="email" class="form-control-inline m-3" required>
             </div>
             <div class="form-group">
               <label for="password">Password:</label>
-              <input type="password" [(ngModel)]="loginData.password" name="password" class="form-control-inline m-3"
+              <input type="password" [(ngModel)]="loginData.password" id="password" name="password" class="form-control-inline m-3"
                      required>
             </div>
             <div class="form-group">

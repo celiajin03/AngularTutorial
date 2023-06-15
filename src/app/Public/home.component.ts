@@ -18,6 +18,6 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.exampleVariable = "the new data"
     }, 200);
-    // this.jobService.getAllJobs().subscribe(data=> this.availableJobs = data);
+    this.jobService.getAllJobs().subscribe(data=> this.availableJobs = data);
   }
 }

@@ -46,12 +46,12 @@ export class RegisterComponent {
           this.submitted = true;
           setTimeout(()=> {
             this.router.navigateByUrl('/Account/Login');
-          }, 3000)
+          }, 1000)
         }
         else {
           this.flag = true;
         }
       });
-    };
+    }
   }
 }

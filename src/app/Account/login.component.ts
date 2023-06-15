@@ -19,7 +19,7 @@ export class LoginComponent {
   constructor(private accountService:AccountService, private router:Router) {}
 
   Login(form: NgForm) {
-    if(form.invalid) {
+    if(form.valid) {
       this.loginData.email = form.value.email;
       this.loginData.password = form.value.password;
       this.accountService.Login(this.loginData).subscribe(data => {
@@ -27,11 +27,11 @@ export class LoginComponent {
           this.flag = true;
           setTimeout(() => {
             this.router.navigateByUrl('/');
-          }, 3000);
+          }, 1000);
         }
         else {
           this.invalidLogin = true;
-        };
+        }
       });
     }
   }

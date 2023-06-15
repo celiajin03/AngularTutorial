@@ -24,13 +24,13 @@ export class AccountService {
   constructor(private http:HttpClient) { }
 
   Register(registerData:Register): Observable<boolean> {
-    return this.http.post<boolean>("https://antra2023apigateway.azure-api.net/recruting/api/Account/Register", registerData, {
+    return this.http.post<boolean>("https://antra2023apigateway.azure-api.net/authentication/api/Account/register", registerData, {
       headers: {'Ocp-Apim-Subscription-Key': environment.subscriptionKey}
     });
   }
 
   Login(loginData:Login):Observable<boolean> {
-    return this.http.post<boolean>("https://antra2023apigateway.azure-api.net/recruting/api/Account/Login", loginData, {
+    return this.http.post<boolean>("https://antra2023apigateway.azure-api.net/authentication/api/Account/login", loginData, {
       headers: {'Ocp-Apim-Subscription-Key': environment.subscriptionKey}
     }).pipe(map((response:any)=>{
       if(response) {
